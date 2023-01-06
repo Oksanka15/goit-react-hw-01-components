@@ -5,7 +5,7 @@ import user from "./Data/user.json";
 import { Statistics } from "./Statistics/Statistics";
 import data from "./Data/data.json";
 import { TransactionHistory } from "./TransactionHistory/TransactionHistory";
-import transactions from "./Data/transactions.json"
+import transactions from "./Data/transactions.json";
 
 export const App = () => {
   return (
