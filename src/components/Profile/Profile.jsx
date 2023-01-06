@@ -44,6 +44,6 @@ Profile.propTypes = {
   tag: PropTypes.string.isRequired, 
   location: PropTypes.string,
   avatar: PropTypes.string, 
-  stats: PropTypes.objectOf,
+  stats: PropTypes.objectOf(PropTypes.number),
 
 }
