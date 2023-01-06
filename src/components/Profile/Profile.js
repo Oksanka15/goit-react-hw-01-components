@@ -1,30 +1,49 @@
-export const Profile = ({username, tag, location,avatar, stats}) =>
-{return (
-<div class="profile">
-  <div class="description">
-    <img
-      src={avatar}
-      alt={username}
-      class="avatar"
-    />
-    <p class="name">{username}</p>
-    <p class="tag">@{tag}</p>
-    <p class="location">{location}</p>
-  </div>
+import PropTypes  from 'prop-types';
+import {
+  ProfileStyled,
+  DescriptionStyled,
+  Avatar,
+  UserName,
+  TagName,
+  Location,
+  ProfileStatListStyled,
+  ProfileStatsLabel, 
+  StatsItem, 
+  Quantity
+} from './Profile.style';
 
-  <ul class="stats">
+export const Profile = ({username, tag, location, avatar, stats, id}) =>
+{return (
+<ProfileStyled>
+  <DescriptionStyled>
+  <Avatar avatar={avatar} alt={username} />
+  <UserName>{username}</UserName>
+  <TagName>&#64;{tag}</TagName>
+  <Location>{location}</Location>
+  </DescriptionStyled>
+
+  <ProfileStatListStyled>
+    <StatsItem key={id}>
+      <ProfileStatsLabel>&#9787;</ProfileStatsLabel>
+      <Quantity>{stats.followers}</Quantity>
+    </StatsItem >
     <li>
-      <span class="label">Followers</span>
-      <span class="quantity">{stats.followers}</span>
+      <ProfileStatsLabel>&#10149;</ProfileStatsLabel>
+      <Quantity>{stats.views}</Quantity>
     </li>
     <li>
-      <span class="label">Views</span>
-      <span class="quantity">{stats.views}</span>
+      <ProfileStatsLabel>&#10084;</ProfileStatsLabel>
+      <Quantity>{stats.likes}</Quantity>
     </li>
-    <li>
-      <span class="label">Likes</span>
-      <span class="quantity">{stats.likes}</span>
-    </li>
-  </ul>
-</div>
-)}
+  </ProfileStatListStyled>
+</ProfileStyled>
+)};
+
+Profile.propTypes = {
+  username: PropTypes.string.isRequired,
+  tag: PropTypes.string.isRequired, 
+  location: PropTypes.string,
+  avatar: PropTypes.string, 
+  stats: PropTypes.objectOf,
+
+}
